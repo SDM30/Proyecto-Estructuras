@@ -27,8 +27,7 @@ void interfazConsola() {
 
       if(numParametros > 1){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 1);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 1);
         
       }else{
         
@@ -42,8 +41,7 @@ void interfazConsola() {
 
       if(numParametros > 0){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 0);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 0);
         
       }else{
 
@@ -55,8 +53,7 @@ void interfazConsola() {
 
       if(numParametros > 1){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 1);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 1);
         
       }else{
 
@@ -69,8 +66,7 @@ void interfazConsola() {
 
       if(numParametros > 1){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 1);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 1);
         
       }else{
 
@@ -83,8 +79,7 @@ void interfazConsola() {
 
       if(numParametros > 2){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 2);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 2);
         
       }else{
 
@@ -100,8 +95,7 @@ void interfazConsola() {
 
       if(numParametros > 4){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 4);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 4);
         
       }else{
 
@@ -117,8 +111,7 @@ void interfazConsola() {
 
       if(numParametros > 1){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 1);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 1);
         
       }else{
 
@@ -133,8 +126,7 @@ void interfazConsola() {
 
       if(numParametros > 3){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 3);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 3);
         
       }else{
 
@@ -149,8 +141,7 @@ void interfazConsola() {
 
       if(numParametros > 2){
         
-        printf("El comando %s solo acepta %d parametros\n",comando, 2);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 2);
         
       }else{
 
@@ -164,8 +155,7 @@ void interfazConsola() {
 
       if(numParametros > 2){
 
-        printf("El comando %s solo acepta %d parametros\n",comando, 2);
-        break;
+        printf("Error en comando %s: numero de parametros aceptados %d\n",comando, 2);
 
       }else{
       
