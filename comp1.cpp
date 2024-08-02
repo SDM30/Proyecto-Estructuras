@@ -9,7 +9,7 @@ void cargar(char *nombre_archivo) {
     
   if(nombre_archivo == nullptr){
   
-    cout<<"Error: el comando un archivo existente como parametro"<<endl;
+    cout<<"Error: el comando  esperaba un archivo existente como parametro"<<endl;
     return;
     
   }
@@ -59,7 +59,7 @@ void descargar(char *nombre_objeto) {
 
   if(nombre_objeto == nullptr){
 
-    cout<<"Error: el comando un archivo existente como parametro"<<endl;
+    cout<<"Error: el comando esperaba un objeto existente como parametro"<<endl;
     return;
     
   }
