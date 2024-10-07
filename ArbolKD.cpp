@@ -94,10 +94,10 @@ NodoKD* ArbolKD::cercano(NodoKD* n1, NodoKD* n2, Vertice val) {
     }
 }
 
-NodoKD* ArbolKD::vecinoCercano(NodoKD* nodo, Vertice val) {
+NodoKD* ArbolKD::vecinoCercano(Vertice val) {
     NodoKD* mejorNodo = NULL;
     int mejorD = std::numeric_limits<int>::max();
-    vecinoCercanoRec(raiz, val, 'x', mejorNodo, mejorD);
+    vecinoCercanoRec(this->raiz, val, 'x', mejorNodo, mejorD);
     return mejorNodo;
 }
 
@@ -172,6 +172,17 @@ void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD
     if (distEje < distActual) {
         vecinoCercanoRec(otraRama, val, nuevaDimension, mejorNodo, mejorDist);
         nodoVecino = cercano(mejorNodo, nodo, val);
+    }
+}
+
+void ArbolKD::insertarLista(std::vector<Vertice> verFig) {
+    bool insertado = false;
+    std::vector<Vertice>::iterator it = verFig.begin();
+    for (; it != verFig.end(); it++) {
+        this->raiz = insertarRec(this->raiz, *it, insertado, 'x');
+        if (!insertado) {
+            std::cout<<"Error en la insercion del punto "<< *it <<std::endl;
+        }
     }
 }
 
