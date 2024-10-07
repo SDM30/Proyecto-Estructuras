@@ -1,8 +1,10 @@
 #include <iostream>
+#include <map>
 #include "JSDUtils.h"
 #include "comp2.h"
 #include "Sistema3D.h"
 #include "ArbolKD.h"
+#include <algorithm>
 
 void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
@@ -34,8 +36,55 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
     std::cout << "Parametro:" << pz << std::endl;
 
     if (sysFiguras.figs3D.empty()){
-      
+      std::cout<<"Ningun objeto ha sido cargado en memoria."<<std::endl;
+      return;
     }
+
+    Vertice cercano;
+    std::map<double, std::string> mejorVertice;
+    std::vector<Poly_Mesh>::iterator it = sysFiguras.figs3D.begin();
+    for (;it != sysFiguras.figs3D.end(); it++) {
+      ArbolKD arbolAux;
+      arbolAux.insertarLista(it->getVer());
+      NodoKD* vecino = arbolAux.vecinoCercano(punto);
+      
+      if (vecino != nullptr) {
+          // Calcular la distancia y usarla como clave
+          double distancia = vecino->obtenerDato().distanciaEuclidiana(punto);
+          //std::cout << "Distancia: " << distancia << " para la malla: " << it->getNombre_mesh() << std::endl;
+          mejorVertice[distancia] = it->getNombre_mesh();  // Asignar la distancia y el nombre de la malla
+      }
+    }
+
+    if (!mejorVertice.empty()) {
+      std::map<double, std::string>::iterator mallaCercana = mejorVertice.begin();
+      Poly_Mesh figuraCercana = sysFiguras.buscarRetMalla(mallaCercana->second);
+      //Buscar vertice con la misma distancia
+      std::vector<Vertice>::iterator itV = figuraCercana.getVer().begin();
+      std::cout << "DISTANCIA A BUSCAR = " << mallaCercana->first << std::endl;
+      for (; itV != figuraCercana.getVer().end(); itV++) {
+          std::cout << "Distancia encontrada = "<< itV->distanciaEuclidiana(punto) << std::endl;
+        if (mallaCercana->first == itV->distanciaEuclidiana(punto)){
+          cercano = Vertice(itV->getInd_ver(), itV->getX(), itV->getY(), itV->getZ());
+          std::cout << "Vértice cercano encontrado: " << cercano.getInd_ver() << std::endl;
+          break;
+        }
+      }
+
+      std::cout << "El vertice " << cercano.getInd_ver() 
+                << " ("
+                << cercano.getX() << ", "
+                << cercano.getY() << ", "
+                << cercano.getZ() << ") "
+                << "del objeto " << figuraCercana.getNombre_mesh()
+                << " es el mas cercano al punto ("
+                << punto.getX() << ", "
+                << punto.getY() << ", "
+                << punto.getZ() << "), "
+                << "a una distancia " 
+                << cercano.distanciaEuclidiana(punto) << std::endl;          
+    }
+    
 
   } else {
 
@@ -46,7 +95,7 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
     std::cout << "Parametro:" << nombre_objeto << std::endl;
 
     if (!sysFiguras.buscarMalla(nombre_objeto)){
-      std::cout<<"El objeto "<<nombre_objeto<<"no ha sido cargado en memoria"<<std::std::endl;
+      std::cout<<"El objeto "<<nombre_objeto<<"no ha sido cargado en memoria"<<std::endl;
       return;
     }
 

@@ -25,9 +25,9 @@ void Vertice::setY(double y) {this->y = y;}
 void Vertice::setZ(double z) {this->z = z;}
 
 double Vertice::distanciaEuclidiana(Vertice val2) {
-  return sqrt(pow(this->x - val2.getX(), 2)) + 
-         sqrt(pow(this->y - val2.getY(), 2)) + 
-         sqrt(pow(this->z - val2.getZ(), 2));
+  return sqrt((pow(this->x - val2.getX(), 2)) + 
+              (pow(this->y - val2.getY(), 2)) + 
+              (pow(this->z - val2.getZ(), 2)));
 }
 
 // Sobrecarga del operador << para imprimir un vértice
