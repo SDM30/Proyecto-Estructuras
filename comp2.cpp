@@ -4,6 +4,7 @@
 #include "comp2.h"
 #include "Sistema3D.h"
 #include "ArbolKD.h"
+#include "comp1.h"
 #include <algorithm>
 
 void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
@@ -115,7 +116,7 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
     Poly_Mesh figura = sysFiguras.buscarRetMalla(nombre_objeto);
     ArbolKD arbolVertices;
     arbolVertices.insertarLista(figura.getVer());
-    NodoKD* VerticeCercano = arbolVertices.vecinoCercano(punto);
+    NodoKD* VerticeCercano = arbolVertices.vecinoCercano(punto); 
 
     if (VerticeCercano != nullptr) {
         std::cout << "El vertice " << VerticeCercano->obtenerDato().getInd_ver() << " (" 
@@ -136,14 +137,48 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
 void v_cercanos_caja(char *nombre_objeto) {
 
-  if (nombre_objeto == nullptr) {
+  Sistema3D sysFiguras;
 
+  if (nombre_objeto == nullptr) {
     std::cout << "Error: el comando esperaba un objeto" << std::endl;
     return;
-    
   }
 
   std::cout << "comando v_cercano_caja" << std::endl;
   std::cout << "Parametro:" << nombre_objeto << std::endl;
+
+  // Buscar objeto
+  if (!sysFiguras.buscarMalla(nombre_objeto)) {
+    std::cout << "El objeto" << nombre_objeto << "no ha sido cargado en memoria" << std::endl;
+    return;
+  }
+
+  Poly_Mesh fig = sysFiguras.buscarRetMalla(nombre_objeto);
+  Poly_Mesh figEnv = crearEnvolvente(fig);
+
+  std::cout << "Esquina\t\tVertice\t\tDistancia" << std::endl;
+  ArbolKD arbolVertices;
+  arbolVertices.insertarLista(fig.getVer());
+  Vertice VerticeCercano[8];
+
+  for (int i = 0; i < figEnv.getN_vertices(); i++) {
+    NodoKD* cercano = arbolVertices.vecinoCercano(figEnv.getVer()[i]);
+    VerticeCercano[i] = cercano->obtenerDato();
+  }
+
+  for (int i = 0; i < 8; i++) {
+    std::cout << figEnv.getVer()[i].getInd_ver() 
+              << " ("
+              << figEnv.getVer()[i].getX() << ", "
+              << figEnv.getVer()[i].getY() << ", "
+              << figEnv.getVer()[i].getY() << ")\t"
+              << VerticeCercano[i].getInd_ver()
+              << " ("
+              << VerticeCercano[i].getX() << ", "
+              << VerticeCercano[i].getY() << ", "
+              << VerticeCercano[i].getY() << ")\t"
+              << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i])
+              << std::endl;
+  }
   
 }
