@@ -59,17 +59,30 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
     if (!mejorVertice.empty()) {
       std::map<double, std::string>::iterator mallaCercana = mejorVertice.begin();
       Poly_Mesh figuraCercana = sysFiguras.buscarRetMalla(mallaCercana->second);
+      std::cout << "MALLA ENCONTRADA = " << mallaCercana->second << std::endl;
       //Buscar vertice con la misma distancia
-      std::vector<Vertice>::iterator itV = figuraCercana.getVer().begin();
       std::cout << "DISTANCIA A BUSCAR = " << mallaCercana->first << std::endl;
-      for (; itV != figuraCercana.getVer().end(); itV++) {
-          std::cout << "Distancia encontrada = "<< itV->distanciaEuclidiana(punto) << std::endl;
-        if (mallaCercana->first == itV->distanciaEuclidiana(punto)){
-          cercano = Vertice(itV->getInd_ver(), itV->getX(), itV->getY(), itV->getZ());
-          std::cout << "Vértice cercano encontrado: " << cercano.getInd_ver() << std::endl;
-          break;
+
+      for (int i = 0; i < figuraCercana.getN_vertices(); i++) {
+        std::cout << figuraCercana.getVer()[i].getInd_ver() << " "
+                  << figuraCercana.getVer()[i].getX() << " " << figuraCercana.getVer()[i].getY()
+                  << " " << figuraCercana.getVer()[i].getZ() << std::endl;
+        double distVer = figuraCercana.getVer()[i].distanciaEuclidiana(punto);
+        std::cout << "Distancia vertice actual =" << distVer << std::endl;
+        if (mallaCercana->first == distVer) {
+            cercano = figuraCercana.getVer()[i];
+            break;
         }
       }
+
+      // for (; itV != figuraCercana.getVer().end(); itV++) {
+      //     std::cout << *itV << std::endl;
+      //     std::cout << "Distancia encontrada = "<< itV->distanciaEuclidiana(punto) << std::endl;
+      //   if (mallaCercana->first == itV->distanciaEuclidiana(punto)){
+      //     cercano = Vertice(itV->getInd_ver(), itV->getX(), itV->getY(), itV->getZ());
+      //     break;
+      //   }
+      // }
 
       std::cout << "El vertice " << cercano.getInd_ver() 
                 << " ("
@@ -113,6 +126,7 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
                 << punto.getX() << ", "
                 << punto.getY() << ", "
                 << punto.getZ() << ")" << std::endl;
+        std::cout << VerticeCercano->obtenerDato().distanciaEuclidiana(punto)<<std::endl;
     } else {
         std::cout << "No se encontró un vecino cercano." << std::endl;
     }

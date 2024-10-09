@@ -148,6 +148,12 @@ void cargar(char *nombre_archivo) {
                   << " " << mesh.getVer()[i].getZ() << std::endl;
       }
 
+      std::vector<Vertice>::iterator it;
+      for (it = mesh.getVer().begin(); it != mesh.getVer().end(); it++) {
+        std::cout<< *it << std::endl;
+        std::cout<<it->getX()<<std::endl;
+      }
+
       std::cout << "INFORMACION CARA:" << std::endl;
 
       for (int i = 0; i < mesh.getCaras().size(); i++) {
