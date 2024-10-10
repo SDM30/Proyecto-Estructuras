@@ -84,8 +84,8 @@ NodoKD* ArbolKD::cercano(NodoKD* n1, NodoKD* n2, Vertice val) {
     if (n1 == NULL) 
         return n2;
 
-    int distN1 = n1->obtenerDato().distanciaEuclidiana(val);
-    int distN2 = n2->obtenerDato().distanciaEuclidiana(val);
+    double distN1 = n1->obtenerDato().distanciaEuclidiana(val);
+    double distN2 = n2->obtenerDato().distanciaEuclidiana(val);
 
     if (distN1 < distN2) {
         return n1;
@@ -96,18 +96,18 @@ NodoKD* ArbolKD::cercano(NodoKD* n1, NodoKD* n2, Vertice val) {
 
 NodoKD* ArbolKD::vecinoCercano(Vertice val) {
     NodoKD* mejorNodo = NULL;
-    int mejorD = std::numeric_limits<int>::max();
+    double mejorD = std::numeric_limits<double>::max();
     vecinoCercanoRec(this->raiz, val, 'x', mejorNodo, mejorD);
     return mejorNodo;
 }
 
-void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD*& mejorNodo, int& mejorDist) {
+void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD*& mejorNodo, double& mejorDist) {
     NodoKD* sigRama = NULL;
     NodoKD* otraRama = NULL;
 
     if (nodo == NULL) return;
 
-    int distActual = val.distanciaEuclidiana(nodo->obtenerDato());
+    double distActual = val.distanciaEuclidiana(nodo->obtenerDato());
     if (distActual < mejorDist) {
         mejorDist = distActual;
         mejorNodo = nodo;
@@ -160,7 +160,7 @@ void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD
     NodoKD* nodoVecino = cercano(mejorNodo, nodo, val);
 
     //Distancia entre la recta y el punto
-    int distEje;
+    double distEje;
     if (dimension == 'x') {
         distEje = abs(val.getX() - nodo->obtenerDato().getX());
     } else if (dimension == 'y') {

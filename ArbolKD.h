@@ -22,7 +22,7 @@ public:
     NodoKD *insertarRec(NodoKD* nodo, Vertice val, bool& insertado, char dimension);
     NodoKD *cercano(NodoKD* n1, NodoKD* n2, Vertice val);
     NodoKD *vecinoCercano(Vertice val);
-    void vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD*& mejorNodo, int& mejorDist);
+    void vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD*& mejorNodo, double& mejorDist);
     void insertarLista(std::vector<Vertice> verFig);
     //Recorridos
     void preOrden();
