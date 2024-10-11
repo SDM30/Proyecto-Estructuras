@@ -117,7 +117,7 @@ void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD
     if (val.getX() == nodo->obtenerDato().getX() && 
         val.getY() == nodo->obtenerDato().getY() &&
         val.getZ() == nodo->obtenerDato().getZ() ) {
-        std::cout<<"Se encontro un punto igual"<<std::endl;
+        //std::cout<<"Se encontro un punto igual"<<std::endl;
         mejorNodo = nodo;
         return;
     } else if (dimension == 'x') {
