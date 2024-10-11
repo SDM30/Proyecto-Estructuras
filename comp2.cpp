@@ -1,11 +1,15 @@
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <algorithm>
+#include <iomanip>
+
 #include "JSDUtils.h"
 #include "comp2.h"
 #include "Sistema3D.h"
 #include "ArbolKD.h"
 #include "comp1.h"
-#include <algorithm>
+
 
 void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
@@ -156,7 +160,10 @@ void v_cercanos_caja(char *nombre_objeto) {
   Poly_Mesh fig = sysFiguras.buscarRetMalla(nombre_objeto);
   Poly_Mesh figEnv = crearEnvolvente(fig);
 
-  std::cout << "Esquina\t\tVertice\t\tDistancia" << std::endl;
+  std::cout << std::left
+          << std::setw(30) << "Esquina" 
+          << std::setw(30) << "Vertice"
+          << std::setw(20) << "Distancia" << std::endl;
   ArbolKD arbolVertices;
   arbolVertices.insertarLista(fig.getVer());
   Vertice VerticeCercano[8];
@@ -167,18 +174,45 @@ void v_cercanos_caja(char *nombre_objeto) {
   }
 
   for (int i = 0; i < 8; i++) {
-    std::cout << figEnv.getVer()[i].getInd_ver() 
-              << " ("
-              << figEnv.getVer()[i].getX() << ", "
-              << figEnv.getVer()[i].getY() << ", "
-              << figEnv.getVer()[i].getY() << ")\t"
-              << VerticeCercano[i].getInd_ver()
-              << " ("
-              << VerticeCercano[i].getX() << ", "
-              << VerticeCercano[i].getY() << ", "
-              << VerticeCercano[i].getY() << ")\t"
-              << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i])
-              << std::endl;
+    std::string strEnv = crearStrVerticeFigura(figEnv, i);
+    std::string strVerCercano = crearStrVerticeCercano(VerticeCercano, i);
+
+    // std::cout << figEnv.getVer()[i].getInd_ver() 
+    //           << " ("
+    //           << figEnv.getVer()[i].getX() << ", "
+    //           << figEnv.getVer()[i].getY() << ", "
+    //           << figEnv.getVer()[i].getY() << ")\t"
+    //           << VerticeCercano[i].getInd_ver()
+    //           << " ("
+    //           << VerticeCercano[i].getX() << ", "
+    //           << VerticeCercano[i].getY() << ", "
+    //           << VerticeCercano[i].getY() << ")\t"
+    //           << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i])
+    //           << std::endl;
+
+    std::cout << std::left << std::setw(30) << strEnv;
+    std::cout << std::left << std::setw(30) << strVerCercano;
+    std::cout << std::left << std::setw(20) << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i]) << std::endl;
   }
   
+}
+
+std::string crearStrVerticeFigura(Poly_Mesh& fig, int indice) {
+  std::ostringstream ss;
+  ss << fig.getVer()[indice].getInd_ver() 
+     << " ("
+     << fig.getVer()[indice].getX() << ", "
+     << fig.getVer()[indice].getY() << ", "
+     << fig.getVer()[indice].getY() << ")";
+  return ss.str();
+}
+
+std::string crearStrVerticeCercano(Vertice verticeCercano[], int indice) {
+  std::ostringstream ss;
+  ss  << verticeCercano[indice].getInd_ver()
+      << " ("
+      << verticeCercano[indice].getX() << ", "
+      << verticeCercano[indice].getY() << ", "
+      << verticeCercano[indice].getY() << ")";
+  return ss.str();
 }
