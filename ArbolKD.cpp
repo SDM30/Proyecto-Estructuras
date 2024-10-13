@@ -157,7 +157,6 @@ void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD
     }
 
     vecinoCercanoRec(sigRama, val, nuevaDimension, mejorNodo, mejorDist);
-    NodoKD* nodoVecino = cercano(mejorNodo, nodo, val);
 
     //Distancia entre la recta y el punto
     double distEje;
@@ -169,9 +168,8 @@ void ArbolKD::vecinoCercanoRec(NodoKD* nodo, Vertice val, char dimension, NodoKD
         distEje = abs(val.getZ() - nodo->obtenerDato().getZ());
     }
     
-    if (distEje < distActual) {
+    if (distEje < mejorDist) {
         vecinoCercanoRec(otraRama, val, nuevaDimension, mejorNodo, mejorDist);
-        nodoVecino = cercano(mejorNodo, nodo, val);
     }
 }
 

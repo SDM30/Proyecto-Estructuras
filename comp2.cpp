@@ -168,7 +168,7 @@ void v_cercanos_caja(char *nombre_objeto) {
   arbolVertices.insertarLista(fig.getVer());
   Vertice VerticeCercano[8];
 
-  for (int i = 0; i < figEnv.getN_vertices(); i++) {
+  for (int i = 0; i < 8; i++) {
     NodoKD* cercano = arbolVertices.vecinoCercano(figEnv.getVer()[i]);
     VerticeCercano[i] = cercano->obtenerDato();
   }
@@ -203,7 +203,7 @@ std::string crearStrVerticeFigura(Poly_Mesh& fig, int indice) {
      << " ("
      << fig.getVer()[indice].getX() << ", "
      << fig.getVer()[indice].getY() << ", "
-     << fig.getVer()[indice].getY() << ")";
+     << fig.getVer()[indice].getZ() << ")";
   return ss.str();
 }
 
@@ -213,6 +213,6 @@ std::string crearStrVerticeCercano(Vertice verticeCercano[], int indice) {
       << " ("
       << verticeCercano[indice].getX() << ", "
       << verticeCercano[indice].getY() << ", "
-      << verticeCercano[indice].getY() << ")";
+      << verticeCercano[indice].getZ() << ")";
   return ss.str();
 }
