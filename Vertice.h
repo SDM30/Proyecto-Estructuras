@@ -22,6 +22,8 @@ public:
 
   // Sobrecargar el operador << para imprimir los vértices
   friend std::ostream& operator<<(std::ostream& os, const Vertice& v);
+  bool operator==(const Vertice otro) const;
+  bool operator<(const Vertice& otro) const;
 };
 
 #endif

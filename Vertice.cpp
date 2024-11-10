@@ -32,6 +32,14 @@ double Vertice::distanciaEuclidiana(Vertice val2) {
 
 // Sobrecarga del operador << para imprimir un vértice
 std::ostream& operator<<(std::ostream& os, const Vertice& v) {
-    os << "Vertice(ID: " << v.ind_ver << ", X: " << v.x << ", Y: " << v.y << ", Z: " << v.z << ")";
+    os << v.ind_ver;
     return os;
+}
+
+bool Vertice::operator==(const Vertice otro) const {
+  return this->ind_ver == otro.ind_ver;
+}
+
+bool Vertice::operator<(const Vertice& otro) const {
+  return this->ind_ver < otro.ind_ver;
 }

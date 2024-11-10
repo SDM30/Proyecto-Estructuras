@@ -105,3 +105,44 @@ Vertice Poly_Mesh::obtenerVerticeMin() {
   return pMin;
 }
 
+void Poly_Mesh::construirGrafo() {
+  std::vector<Vertice> vertices_cara;
+
+  for (int i = 0; i < caras.size(); i++) {
+    for (int j = 0; j < caras[i].getNum_ver(); j++) {
+
+        for (int k = 0; k < ver.size(); k++) {
+          if (caras[i].getInd_caras()[j] == ver[k].getInd_ver()) {
+            vertices_cara.push_back(ver[k]);
+            grafo_figura.insertarVertice(ver[k]);
+          }
+        }
+    }
+
+    for (int j = 0; j < caras[i].getNum_ver(); j++) {
+        //Tomar un vertice x y crear una arista dirigida con el x+1
+        if (j == (caras[i].getNum_ver() - 1)) {
+          grafo_figura.insAristaNoDir(vertices_cara[j], vertices_cara[0], vertices_cara[j].distanciaEuclidiana(vertices_cara[0]));
+        } else {
+          grafo_figura.insAristaNoDir(vertices_cara[j], vertices_cara[j+1], vertices_cara[j].distanciaEuclidiana(vertices_cara[j+1]));
+        }
+    }
+
+    std::cout << "Recorrido para la cara: ";
+    for (int j = 0; j < caras[i].getNum_ver(); j++) {
+      std::cout << caras[i].getInd_caras()[j] << " ";
+    } 
+    std::cout << std::endl;
+
+    vertices_cara.clear();
+  }
+  std::cout << "Cantidad Aristas = " << grafo_figura.cantAristas() << std::endl;
+
+  std::cout << "DFS = ";
+  grafo_figura.DFS(ver[0]);
+
+  std::cout << "BFS = ";
+  grafo_figura.BFS(ver[0]);
+
+  grafo_figura.mostrarMatrizAdyacencia();
+}

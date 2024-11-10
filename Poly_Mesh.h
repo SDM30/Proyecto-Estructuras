@@ -5,6 +5,7 @@
 
 #include "Cara.h"
 #include "Vertice.h"
+#include "Grafo.h"
 
 class Poly_Mesh {
 
@@ -13,6 +14,7 @@ private:
   unsigned int n_vertices;
   std::vector<Vertice> ver;
   std::vector<Cara> caras;
+  Grafo<Vertice> grafo_figura;
 
 public:
   // Constructor
@@ -27,5 +29,6 @@ public:
   unsigned int sumAristas();
   Vertice obtenerVerticeMax();
   Vertice obtenerVerticeMin();
+  void construirGrafo();
 };
 #endif
