@@ -80,15 +80,6 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
         }
       }
 
-      // for (; itV != figuraCercana.getVer().end(); itV++) {
-      //     std::cout << *itV << std::endl;
-      //     std::cout << "Distancia encontrada = "<< itV->distanciaEuclidiana(punto) << std::endl;
-      //   if (mallaCercana->first == itV->distanciaEuclidiana(punto)){
-      //     cercano = Vertice(itV->getInd_ver(), itV->getX(), itV->getY(), itV->getZ());
-      //     break;
-      //   }
-      // }
-
       std::cout << "El vertice " << cercano.getInd_ver() 
                 << " ("
                 << cercano.getX() << ", "
@@ -176,20 +167,6 @@ void v_cercanos_caja(char *nombre_objeto) {
   for (int i = 0; i < 8; i++) {
     std::string strEnv = crearStrVerticeFigura(figEnv, i);
     std::string strVerCercano = crearStrVerticeCercano(VerticeCercano, i);
-
-    // std::cout << figEnv.getVer()[i].getInd_ver() 
-    //           << " ("
-    //           << figEnv.getVer()[i].getX() << ", "
-    //           << figEnv.getVer()[i].getY() << ", "
-    //           << figEnv.getVer()[i].getY() << ")\t"
-    //           << VerticeCercano[i].getInd_ver()
-    //           << " ("
-    //           << VerticeCercano[i].getX() << ", "
-    //           << VerticeCercano[i].getY() << ", "
-    //           << VerticeCercano[i].getY() << ")\t"
-    //           << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i])
-    //           << std::endl;
-
     std::cout << std::left << std::setw(30) << strEnv;
     std::cout << std::left << std::setw(30) << strVerCercano;
     std::cout << std::left << std::setw(20) << figEnv.getVer()[i].distanciaEuclidiana(VerticeCercano[i]) << std::endl;
