@@ -2,10 +2,13 @@
 #define __POLY_MESH__H__
 #include <string>
 #include <vector>
+#include <limits>
 
 #include "Cara.h"
 #include "Vertice.h"
 #include "Grafo.h"
+#include "Sistema3D.h"
+#include "ArbolKD.h"
 
 class Poly_Mesh {
 
@@ -29,7 +32,9 @@ public:
   unsigned int sumAristas();
   Vertice obtenerVerticeMax();
   Vertice obtenerVerticeMin();
+  Grafo<Vertice> obtenerGrafo();
   void construirGrafo();
   Vertice calcularCentroide();
+  void posicionarCentroide(Vertice centroide);
 };
 #endif

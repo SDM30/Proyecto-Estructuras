@@ -1,5 +1,5 @@
 #include "Poly_Mesh.h"
-#include <limits>
+
 
 // Implementación del constructor
 Poly_Mesh::Poly_Mesh(std::string nombre_mesh, unsigned int n_vertices,
@@ -105,6 +105,10 @@ Vertice Poly_Mesh::obtenerVerticeMin() {
   return pMin;
 }
 
+Grafo<Vertice> Poly_Mesh::obtenerGrafo() {
+  return this->grafo_figura;
+}
+
 void Poly_Mesh::construirGrafo() {
   std::vector<Vertice> vertices_cara;
 
@@ -145,24 +149,24 @@ void Poly_Mesh::construirGrafo() {
   // std::cout << "BFS = ";
   // grafo_figura.BFS(ver[0]);
 
-  // grafo_figura.mostrarMatrizAdyacencia();
+  grafo_figura.mostrarMatrizAdyacencia();
 
-  // int n = grafo_figura.cantVertices();
+  int n = grafo_figura.cantVertices();
 
   // // Imprimir encabezado de columnas
   // std::cout << "Matriz de Adyacencia:\n";
 
-  // for (int i = 0; i < n; ++i) {
-  //     for (int j = 0; j < n; ++j) {
-  //         // Aseguramos que cada valor ocupe un espacio de 10 caracteres y se alinee correctamente
-  //         if (j != n - 1) {
-  //           std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
-  //         } else {
-  //           std::cout << grafo_figura.obtenerAristas()[i][j]; 
-  //         }  
-  //     }
-  //     std::cout << "\n";
-  // }
+  for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+          if (j != n - 1) {
+            std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
+          } else {
+            std::cout << grafo_figura.obtenerAristas()[i][j]; 
+          }  
+      }
+      std::cout << std::endl;
+  }
+
 }
 
 Vertice Poly_Mesh::calcularCentroide() {
@@ -184,4 +188,16 @@ Vertice Poly_Mesh::calcularCentroide() {
   centroide.setZ(prom_z);
 
   return centroide;
+}
+
+void Poly_Mesh::posicionarCentroide(Vertice centroide) {
+  Sistema3D sistema;
+  ArbolKD arbolVertices;
+  this->construirGrafo();
+
+  arbolVertices.insertarLista(this->getVer());
+  NodoKD* VerticeCercano = arbolVertices.vecinoCercano(centroide);
+
+  Vertice vecino_centro = VerticeCercano->obtenerDato();
+  
 }

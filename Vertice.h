@@ -15,6 +15,7 @@ public:
   double getX();
   double getY();
   double getZ();
+  void setIndVer(unsigned int ind_ver);
   void setX(double x);
   void setY(double y);
   void setZ(double z);

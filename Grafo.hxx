@@ -311,6 +311,99 @@ std::vector<T> Grafo<T>::BFS(T ver_inicial) {
     return caminoBFS;
 }
 
+template <class T>
+std::vector<T*> Grafo<T>::Dijkstra(T ver_inicial) {
+
+    // Definir una colección para almacenar las distancias y predecesores
+    std::vector<double> dist;         
+    std::vector<T*> pred;          
+    std::vector<T> q_desconocidos; 
+
+    if (buscarVertice(ver_inicial) == -1) {
+        std::cout << "El vértice " << ver_inicial << " no está en el grafo." << std::endl;
+        return pred;
+    }
+
+    // Inicializar los vectores `dist` y `pred` con valores iniciales
+    dist.resize(vertices.size(), std::numeric_limits<int>::max()); // Asignar distancias iniciales infinito
+    pred.resize(vertices.size(), nullptr);                         // Asignar predecesores iniciales como nullptr
+
+    int inicio = buscarVertice(ver_inicial);
+    dist[inicio] = 0;
+
+    q_desconocidos = vertices;
+
+    // Mientras haya vértices desconocidos en `q_desconocidos`
+    while (!q_desconocidos.empty()) {
+        // Seleccionar el vértice u en q_desconocidos con la menor distancia
+        int pos_u = 0;
+        int min_dist = std::numeric_limits<int>::max();
+
+        for (int i = 0; i < dist.size(); i++) {
+            // Solo considerar vértices que están en q_desconocidos
+            if (std::find(q_desconocidos.begin(), q_desconocidos.end(), vertices[i]) != q_desconocidos.end() &&
+                dist[i] < min_dist) {
+                min_dist = dist[i];
+                pos_u = i;
+            }
+        }
+        
+        // ver_u es el vértice con la distancia mínima
+        T ver_u = vertices[pos_u];
+        // Remover ver_u de q_desconocidos ya que lo estamos procesando
+        q_desconocidos.erase(std::remove(q_desconocidos.begin(), q_desconocidos.end(), ver_u), q_desconocidos.end());
+
+        // Obtener los vecinos de ver_u
+        std::vector<T> vecinos_u = vecinosVertice(ver_u);
+
+        // Relajar aristas: buscar caminos menos costosos a los vecinos
+        for (T vecino : vecinos_u) {
+            // Verificar que el vecino esté en q_desconocidos
+            if (std::find(q_desconocidos.begin(), q_desconocidos.end(), vecino) != q_desconocidos.end()) {
+                int alt = dist[pos_u] + buscarArista(ver_u, vecino);
+                int pos_v = buscarVertice(vecino);
+
+                // Si encontramos una distancia menor, actualizamos dist y pred
+                if (alt < dist[pos_v]) {
+                    dist[pos_v] = alt;                // Actualizar distancia mínima
+                    pred[pos_v] = &vertices[pos_u];   // Actualizar predecesor
+                }
+            }
+        }
+    }
+    
+    // Retornar el vector de predecesores que permite reconstruir el camino más corto
+    return pred;
+}
+
+template <class T>
+std::vector<T> Grafo<T>::caminoDijkstra(T ver_destino, std::vector<T*> predecesores) {
+    std::vector<T> camino;
+    T* ver_act = &ver_destino;
+
+    // Verificar si el vértice destino existe en el grafo
+    if (buscarVertice(*ver_act) == -1) {
+        std::cout << "Error: El vértice " << *ver_act << " no existe en el grafo." << std::endl;
+        return camino;
+    }
+
+    // Verificar si hay predecesores
+    if (predecesores.empty()) {
+        std::cout << "Error: No hay predecesores." << std::endl;
+        return camino;
+    }
+
+    // Construir el camino desde el destino hasta el origen
+    while (ver_act != nullptr) {  // Hasta que llegues al inicio (predecesor nulo)
+        camino.push_back(*ver_act);
+        ver_act = predecesores[buscarVertice(*ver_act)];
+    }
+
+    std::reverse(camino.begin(), camino.end());
+    return camino;
+}
+
+
 template<class T>
 void Grafo<T>::mostrarMatrizAdyacencia() {
     int n = cantVertices();

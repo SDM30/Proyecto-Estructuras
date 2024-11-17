@@ -5,6 +5,7 @@
 #include <stack>
 #include <algorithm>
 #include <iomanip>
+#include <limits>
 
 template<class T>
 class Grafo {
@@ -32,6 +33,8 @@ class Grafo {
         void plano();
         std::vector<T> DFS(T ver_inicial);
         std::vector<T> BFS(T ver_inicial);
+        std::vector<T*> Dijkstra(T ver_inicial);
+        std::vector<T> caminoDijkstra(T ver_destino, std::vector<T*> predecesores);
         void mostrarMatrizAdyacencia();    
 };
 

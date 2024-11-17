@@ -20,6 +20,7 @@ double Vertice::getY() { return y; }
 
 double Vertice::getZ() { return z; }
 
+void Vertice::setIndVer(unsigned int ind_ver) {this->ind_ver = ind_ver;}
 void Vertice::setX(double x) {this->x = x;}
 void Vertice::setY(double y) {this->y = y;}
 void Vertice::setZ(double z) {this->z = z;}
