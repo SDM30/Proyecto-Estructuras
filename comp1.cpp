@@ -30,8 +30,9 @@ void cargar(char *nombre_archivo) {
     return;
   }
 
-  std::cout << "comando cargar" << std::endl;
-  std::cout << "Parametro:" << nombre_archivo << std::endl;
+  // std::cout << "comando cargar" << std::endl;
+  // std::cout << "Parametro:" << nombre_archivo << std::endl;
+
   std::ifstream entrada(nombre_archivo);
 
   // Archivo no existe
@@ -116,7 +117,7 @@ void cargar(char *nombre_archivo) {
 
     // Verificar lectura de finalArchivo
     if (num_ver_cara == -1) {
-      std::cout << "Fin figura " << nombre_mesh << std::endl;
+      //std::cout << "Fin figura " << nombre_mesh << std::endl;
     } else {
       std::cout << "El archivo " << nombre_archivo
                 << " no contiene un objeto 3D valido: No se pudo leer el final "
@@ -499,7 +500,7 @@ void guardar(char *nombre_objeto, char *nombre_archivo) {
   // std::cout << "comando guardar" << std::endl;
   // std::cout << "Parametro:" << nombre_objeto << std::endl;
   // std::cout << "Parametro:" << nombre_archivo << std::endl;
-  
+
 }
 
 void ayuda(char *param) {
