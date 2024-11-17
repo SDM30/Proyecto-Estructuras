@@ -514,7 +514,7 @@ void ayuda(char *param) {
            "\tguardar\n"
            "\tsalir\n"
            "\tv_cercano\n"
-           "\tv_cercano_caja\n"
+           "\tv_cercanos_caja\n"
            "\truta_corta\n"
            "\truta_corta_centro\n");
 
@@ -638,7 +638,7 @@ void ayuda(char *param) {
            "nombre_objeto es el más cercano\n"
            "al punto (px, py, pz), a una distancia de valor_distancia.\n");
 
-  } else if (strcmp(param, "v_cercano_caja") == 0) {
+  } else if (strcmp(param, "v_cercanos_caja") == 0) {
 
     printf("comando: v_cercanos_caja nombre_objeto\n"
            "descripción: Identifica los vértices del objeto nombre_objeto más "
