@@ -14,6 +14,14 @@ void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
   //prueba
   figura.construirGrafo();  
 
+  //Calcular centroide prueba
+  Vertice centro = figura.calcularCentroide();
+  std::cout << centro.getInd_ver() 
+            << " ("
+            << centro.getX() << ", "
+            << centro.getY() << ", "
+            << centro.getZ() << ")" << std::endl;
+
   if (!esNumero(i1) || !esNumero(i2)) {
 
     std::cout << "Error: Los parametros deben ser un numero" << std::endl;

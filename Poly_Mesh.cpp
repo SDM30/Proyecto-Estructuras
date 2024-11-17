@@ -164,3 +164,24 @@ void Poly_Mesh::construirGrafo() {
   //     std::cout << "\n";
   // }
 }
+
+Vertice Poly_Mesh::calcularCentroide() {
+  Vertice centroide;
+  double prom_x = 0, prom_y = 0, prom_z = 0;
+
+  for (int i = 0; i < ver.size(); i++) {
+    prom_x += ver[i].getX();
+    prom_y += ver[i].getY();
+    prom_z += ver[i].getZ();
+  }
+
+  prom_x = prom_x/ver.size();
+  prom_y = prom_y/ver.size();
+  prom_z = prom_z/ver.size();
+
+  centroide.setX(prom_x);
+  centroide.setY(prom_y);
+  centroide.setZ(prom_z);
+
+  return centroide;
+}
