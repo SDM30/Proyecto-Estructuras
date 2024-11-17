@@ -33,16 +33,17 @@ void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
   int ind_inicio = std::stoi(i1);
   int ind_fin = std::stoi(i2);
 
-  if ((ind_inicio < 0 || ind_inicio > figura.getN_vertices()) || 
-      (ind_fin < 0 || ind_fin > figura.getN_vertices())) {
+  if ((ind_inicio < 0 || ind_inicio > (figura.getN_vertices() - 1)) || 
+      (ind_fin < 0 || ind_fin > (figura.getN_vertices() - 1))) {
     std::cout << "Algunos de los indices de vertices estan fuera de rango para el objeto " << nombre_objeto << "." << std::endl;
+    return;
   }
   
   figura.construirGrafo();
   Grafo<Vertice> grafo_figura = figura.obtenerGrafo();
 
-  Vertice ver_inicio = grafo_figura.obtenerVertices()[ind_inicio];
-  Vertice ver_destino = grafo_figura.obtenerVertices()[ind_fin];
+  Vertice ver_inicio = figura.buscarVerticeInd(ind_inicio);
+  Vertice ver_destino = figura.buscarVerticeInd(ind_fin);
 
   std::vector<Vertice*> pred = grafo_figura.Dijkstra(ver_inicio);
   std::vector<Vertice> ruta = grafo_figura.caminoDijkstra(ver_destino, pred);
@@ -52,7 +53,8 @@ void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
     long_dist += grafo_figura.buscarArista(ruta[i], ruta[i + 1]);
   }
 
-  std::cout << "La ruta más corta que conecta los vertices i1 y i2 del objeto nombre_objeto pasa por: ";
+  std::cout << "La ruta más corta que conecta los vertices " << i1 
+  << " y " << i2 << " del objeto " << nombre_objeto << " pasa por: ";
   for (int i = 0; i < ruta.size(); i++) {
     if (i != ruta.size() - 1) {
       std::cout << ruta[i] << ", ";
@@ -77,25 +79,40 @@ void ruta_corta_centro(char *i1, char *nombre_objeto) {
     return;
   }
 
-  std::cout << "comando r_cercana_centro" << std::endl;
-  if (nombre_objeto == nullptr)
+  Poly_Mesh figura = sistema.buscarRetMalla(nombre_objeto);
 
-    std::cout << "El nombre del objeto no ha sido cargado" << std::endl;
+  int ind_inicio = std::stoi(i1);
 
-  else {
-
-    std::cout << "Parametro:" << i1 << std::endl;
-    std::cout << "Parametro:" << nombre_objeto << std::endl;
+  if (ind_inicio < 0 || ind_inicio > (figura.getN_vertices() - 1)) {
+    std::cout << "El indice de vertice esta fuera de rango para el objeto " << nombre_objeto << "." << std::endl;
+    return;
   }
 
-  // //Calcular centroide prueba
-  // Vertice centro = figura.calcularCentroide();
-  
-  // std::cout << centro.getInd_ver() 
-  //           << " ("
-  //           << centro.getX() << ", "
-  //           << centro.getY() << ", "
-  //           << centro.getZ() << ")" << std::endl;
+  Vertice centroide = figura.calcularCentroide();
+  figura.posicionarCentroide(centroide);
+
+  Grafo<Vertice> grafo_figura = figura.obtenerGrafo();
+
+  Vertice ver_inicio = figura.buscarVerticeInd(ind_inicio);
+  std::vector<Vertice*> pred = grafo_figura.Dijkstra(ver_inicio);
+  std::vector<Vertice> ruta = grafo_figura.caminoDijkstra(centroide, pred);
+  double long_dist = 0;
+
+  for (int i = 0; i < ruta.size() - 1; i++) {
+    long_dist += grafo_figura.buscarArista(ruta[i], ruta[i + 1]);
+  }
+
+  std::cout << "La ruta más corta que conecta el vertice " << i1 
+  << " con el centro del objeto " << nombre_objeto << ", ubicado en " 
+  << crearStrVertice(centroide) << ", pasa por: ";
+  for (int i = 0; i < ruta.size(); i++) {
+    if (i != ruta.size() - 1) {
+      std::cout << ruta[i] << ", ";
+    } else {
+      std::cout << ruta[i] << "; ";
+    }
+  }
+  std::cout << "con una longitud de " << long_dist << "." << std::endl;
 }
 
 std::string crearStrVertice(Vertice v) {

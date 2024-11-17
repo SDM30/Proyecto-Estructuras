@@ -11,10 +11,10 @@ public:
   Vertice(unsigned int ind_ver, double x, double y, double z);
   Vertice();
   // getters
-  unsigned int getInd_ver();
-  double getX();
-  double getY();
-  double getZ();
+  unsigned int getInd_ver() const;
+  double getX() const;
+  double getY() const;
+  double getZ() const;
   void setIndVer(unsigned int ind_ver);
   void setX(double x);
   void setY(double y);

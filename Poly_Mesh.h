@@ -34,6 +34,7 @@ public:
   Grafo<Vertice> obtenerGrafo();
   void construirGrafo();
   Vertice calcularCentroide();
-  void posicionarCentroide(Vertice centroide);
+  void posicionarCentroide(Vertice &centroide);
+  Vertice buscarVerticeInd(unsigned int ind);
 };
 #endif

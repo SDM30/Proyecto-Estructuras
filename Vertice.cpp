@@ -12,13 +12,13 @@ Vertice::Vertice(unsigned int ind_ver, double x, double y, double z) {
 Vertice::Vertice() {}
 
 // Implementación de los getters
-unsigned int Vertice::getInd_ver() { return ind_ver; }
+unsigned int Vertice::getInd_ver() const { return ind_ver; }
 
-double Vertice::getX() { return x; }
+double Vertice::getX() const { return x; }
 
-double Vertice::getY() { return y; }
+double Vertice::getY() const { return y; }
 
-double Vertice::getZ() { return z; }
+double Vertice::getZ() const { return z; }
 
 void Vertice::setIndVer(unsigned int ind_ver) {this->ind_ver = ind_ver;}
 void Vertice::setX(double x) {this->x = x;}

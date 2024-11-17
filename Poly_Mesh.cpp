@@ -192,7 +192,7 @@ Vertice Poly_Mesh::calcularCentroide() {
   return centroide;
 }
 
-void Poly_Mesh::posicionarCentroide(Vertice centroide) {
+void Poly_Mesh::posicionarCentroide(Vertice &centroide) {
   Sistema3D sistema;
   ArbolKD arbolVertices;
   this->construirGrafo();
@@ -207,5 +207,15 @@ void Poly_Mesh::posicionarCentroide(Vertice centroide) {
   grafo_figura.insAristaNoDir(vecino_centro, centroide, vecino_centro.distanciaEuclidiana(centroide));
 
   std::cout << "Vertice mas cercano = " << crearStrVertice(vecino_centro) << std::endl
-            << "Centroide = " << crearStrVertice(vecino_centro) << std::endl;
+            << "Centroide = " << crearStrVertice(centroide) << std::endl;
+}
+
+Vertice Poly_Mesh::buscarVerticeInd(unsigned int ind) {
+  Vertice ver_ind;
+  for (int i = 0; i < grafo_figura.cantVertices(); i++) {
+    if (grafo_figura.obtenerVertices()[i].getInd_ver() == ind) 
+      ver_ind = grafo_figura.obtenerVertices()[i];
+  }
+
+  return ver_ind;
 }
