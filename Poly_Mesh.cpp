@@ -128,21 +128,39 @@ void Poly_Mesh::construirGrafo() {
         }
     }
 
-    std::cout << "Recorrido para la cara: ";
-    for (int j = 0; j < caras[i].getNum_ver(); j++) {
-      std::cout << caras[i].getInd_caras()[j] << " ";
-    } 
-    std::cout << std::endl;
+    // std::cout << "Recorrido para la cara: ";
+    // for (int j = 0; j < caras[i].getNum_ver(); j++) {
+    //   std::cout << caras[i].getInd_caras()[j] << " ";
+    // } 
+    // std::cout << std::endl;
 
     vertices_cara.clear();
   }
-  std::cout << "Cantidad Aristas = " << grafo_figura.cantAristas() << std::endl;
 
-  std::cout << "DFS = ";
-  grafo_figura.DFS(ver[0]);
+  // std::cout << "Cantidad Aristas = " << grafo_figura.cantAristas() << std::endl;
 
-  std::cout << "BFS = ";
-  grafo_figura.BFS(ver[0]);
+  // std::cout << "DFS = ";
+  // grafo_figura.DFS(ver[0]);
 
-  grafo_figura.mostrarMatrizAdyacencia();
+  // std::cout << "BFS = ";
+  // grafo_figura.BFS(ver[0]);
+
+  // grafo_figura.mostrarMatrizAdyacencia();
+
+  // int n = grafo_figura.cantVertices();
+
+  // // Imprimir encabezado de columnas
+  // std::cout << "Matriz de Adyacencia:\n";
+
+  // for (int i = 0; i < n; ++i) {
+  //     for (int j = 0; j < n; ++j) {
+  //         // Aseguramos que cada valor ocupe un espacio de 10 caracteres y se alinee correctamente
+  //         if (j != n - 1) {
+  //           std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
+  //         } else {
+  //           std::cout << grafo_figura.obtenerAristas()[i][j]; 
+  //         }  
+  //     }
+  //     std::cout << "\n";
+  // }
 }

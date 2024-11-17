@@ -118,7 +118,7 @@ bool Grafo<T>::insertarArista(T ori, T des, double cos) {
 
 template <class T>
 bool Grafo<T>::insAristaNoDir(T ori, T des, double cos) {
-    std::cout << "Insertando arista: " << ori << " - " << des << " con costo: " << cos << std::endl;
+    //std::cout << "Insertando arista: " << ori << " - " << des << " con costo: " << cos << std::endl;
     bool res1 = insertarArista(ori, des, cos);
     bool res2 = insertarArista(des, ori, cos);
     return (res1 && res2); 

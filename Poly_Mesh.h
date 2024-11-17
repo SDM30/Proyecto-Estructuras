@@ -30,5 +30,6 @@ public:
   Vertice obtenerVerticeMax();
   Vertice obtenerVerticeMin();
   void construirGrafo();
+  Vertice calcularCentroide();
 };
 #endif
