@@ -187,8 +187,8 @@ void Poly_Mesh::posicionarCentroide(Vertice &centroide) {
 
   grafo_figura.insAristaNoDir(vecino_centro, centroide, vecino_centro.distanciaEuclidiana(centroide));
 
-  std::cout << "Vertice mas cercano = " << crearStrVertice(vecino_centro) << std::endl
-            << "Centroide = " << crearStrVertice(centroide) << std::endl;
+  // std::cout << "Vertice mas cercano = " << crearStrVertice(vecino_centro) << std::endl
+  //           << "Centroide = " << crearStrVertice(centroide) << std::endl;
 }
 
 Vertice Poly_Mesh::buscarVerticeInd(unsigned int ind) {
