@@ -13,7 +13,8 @@
 
 void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
-  std::cout << "comando v_cercano" << std::endl;
+  //Prueba
+  //std::cout << "comando v_cercano" << std::endl;
 
   if ( !esNumero(px) || !esNumero(py) || !esNumero(pz) ) {
 
@@ -35,10 +36,11 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
   if (nombre_objeto == nullptr) {
 
-    std::cout << "comando v_cercano sin param objeto" << std::endl;
-    std::cout << "Parametro:" << px << std::endl;
-    std::cout << "Parametro:" << py << std::endl;
-    std::cout << "Parametro:" << pz << std::endl;
+    //Prueba
+    // std::cout << "comando v_cercano sin param objeto" << std::endl;
+    // std::cout << "Parametro:" << px << std::endl;
+    // std::cout << "Parametro:" << py << std::endl;
+    // std::cout << "Parametro:" << pz << std::endl;
 
     if (sysFiguras.figs3D.empty()){
       std::cout<<"Ningun objeto ha sido cargado en memoria."<<std::endl;
@@ -64,16 +66,17 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
     if (!mejorVertice.empty()) {
       std::map<double, std::string>::iterator mallaCercana = mejorVertice.begin();
       Poly_Mesh figuraCercana = sysFiguras.buscarRetMalla(mallaCercana->second);
-      std::cout << "MALLA ENCONTRADA = " << mallaCercana->second << std::endl;
+      //Prueba
+      //std::cout << "MALLA ENCONTRADA = " << mallaCercana->second << std::endl;
       //Buscar vertice con la misma distancia
-      std::cout << "DISTANCIA A BUSCAR = " << mallaCercana->first << std::endl;
+      //std::cout << "DISTANCIA A BUSCAR = " << mallaCercana->first << std::endl;
 
       for (int i = 0; i < figuraCercana.getN_vertices(); i++) {
-        std::cout << figuraCercana.getVer()[i].getInd_ver() << " "
-                  << figuraCercana.getVer()[i].getX() << " " << figuraCercana.getVer()[i].getY()
-                  << " " << figuraCercana.getVer()[i].getZ() << std::endl;
+        // std::cout << figuraCercana.getVer()[i].getInd_ver() << " "
+        //           << figuraCercana.getVer()[i].getX() << " " << figuraCercana.getVer()[i].getY()
+        //           << " " << figuraCercana.getVer()[i].getZ() << std::endl;
         double distVer = figuraCercana.getVer()[i].distanciaEuclidiana(punto);
-        std::cout << "Distancia vertice actual =" << distVer << std::endl;
+        //std::cout << "Distancia vertice actual =" << distVer << std::endl;
         if (mallaCercana->first == distVer) {
             cercano = figuraCercana.getVer()[i];
             break;
@@ -97,11 +100,11 @@ void v_cercano(char *px, char *py, char *pz, char *nombre_objeto) {
 
   } else {
 
-    std::cout << "comando v_cercano con param" << std::endl;
-    std::cout << "Parametro:" << px << std::endl;
-    std::cout << "Parametro:" << py << std::endl;
-    std::cout << "Parametro:" << pz << std::endl;
-    std::cout << "Parametro:" << nombre_objeto << std::endl;
+    // std::cout << "comando v_cercano con param" << std::endl;
+    // std::cout << "Parametro:" << px << std::endl;
+    // std::cout << "Parametro:" << py << std::endl;
+    // std::cout << "Parametro:" << pz << std::endl;
+    // std::cout << "Parametro:" << nombre_objeto << std::endl;
 
     if (!sysFiguras.buscarMalla(nombre_objeto)){
       std::cout<<"El objeto "<<nombre_objeto<<"no ha sido cargado en memoria"<<std::endl;
@@ -139,8 +142,8 @@ void v_cercanos_caja(char *nombre_objeto) {
     return;
   }
 
-  std::cout << "comando v_cercano_caja" << std::endl;
-  std::cout << "Parametro:" << nombre_objeto << std::endl;
+  // std::cout << "comando v_cercano_caja" << std::endl;
+  // std::cout << "Parametro:" << nombre_objeto << std::endl;
 
   // Buscar objeto
   if (!sysFiguras.buscarMalla(nombre_objeto)) {

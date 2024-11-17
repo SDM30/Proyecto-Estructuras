@@ -139,23 +139,23 @@ void cargar(char *nombre_archivo) {
       Sistema3D::figs3D.push_back(mesh);
 
       // PRUEBA
-      std::cout << mesh.getNombre_mesh() << std::endl;
-      std::cout << mesh.getN_vertices() << std::endl;
-      for (int i = 0; i < mesh.getN_vertices(); i++) {
-        std::cout << mesh.getVer()[i].getInd_ver() << " "
-                  << mesh.getVer()[i].getX() << " " << mesh.getVer()[i].getY()
-                  << " " << mesh.getVer()[i].getZ() << std::endl;
-      }
+      // std::cout << mesh.getNombre_mesh() << std::endl;
+      // std::cout << mesh.getN_vertices() << std::endl;
+      // for (int i = 0; i < mesh.getN_vertices(); i++) {
+      //   std::cout << mesh.getVer()[i].getInd_ver() << " "
+      //             << mesh.getVer()[i].getX() << " " << mesh.getVer()[i].getY()
+      //             << " " << mesh.getVer()[i].getZ() << std::endl;
+      // }
 
-      std::cout << "INFORMACION CARA:" << std::endl;
+      // std::cout << "INFORMACION CARA:" << std::endl;
 
-      for (int i = 0; i < mesh.getCaras().size(); i++) {
-        std::cout << mesh.getCaras()[i].getNum_ver() << " ";
-        for (int j = 0; j < mesh.getCaras()[i].getNum_ver(); j++) {
-          std::cout << mesh.getCaras()[i].getInd_caras()[j] << " ";
-        }
-        std::cout << std::endl;
-      }
+      // for (int i = 0; i < mesh.getCaras().size(); i++) {
+      //   std::cout << mesh.getCaras()[i].getNum_ver() << " ";
+      //   for (int j = 0; j < mesh.getCaras()[i].getNum_ver(); j++) {
+      //     std::cout << mesh.getCaras()[i].getInd_caras()[j] << " ";
+      //   }
+      //   std::cout << std::endl;
+      // }
     }
   }
 }
@@ -165,7 +165,7 @@ void cargar(char *nombre_archivo) {
  *********/
 void listado() {
   // PRUEBA
-  std::cout << "comando listado" << std::endl;
+  //std::cout << "comando listado" << std::endl;
 
   // Revisa si la lista esta vacia
   if (Sistema3D::figs3D.empty()) {
@@ -214,7 +214,7 @@ void envolvente(char *nombre_objeto) {
 
     } else {
 
-      std::cout << "comando envolvente sin param" << std::endl;
+      //std::cout << "comando envolvente sin param" << std::endl;
       Poly_Mesh envGlobal = crearEnvolventeGlobal(Sistema3D::figs3D);
 
       Sistema3D::figs3D.push_back(envGlobal);
@@ -225,24 +225,24 @@ void envolvente(char *nombre_objeto) {
           << std::endl;
 
       // PRUEBA
-      std::cout << envGlobal.getNombre_mesh() << std::endl;
-      std::cout << envGlobal.getN_vertices() << std::endl;
-      for (int i = 0; i < envGlobal.getN_vertices(); i++) {
-        std::cout << envGlobal.getVer()[i].getInd_ver() << " "
-                  << envGlobal.getVer()[i].getX() << " "
-                  << envGlobal.getVer()[i].getY() << " "
-                  << envGlobal.getVer()[i].getZ() << std::endl;
-      }
+      // std::cout << envGlobal.getNombre_mesh() << std::endl;
+      // std::cout << envGlobal.getN_vertices() << std::endl;
+      // for (int i = 0; i < envGlobal.getN_vertices(); i++) {
+      //   std::cout << envGlobal.getVer()[i].getInd_ver() << " "
+      //             << envGlobal.getVer()[i].getX() << " "
+      //             << envGlobal.getVer()[i].getY() << " "
+      //             << envGlobal.getVer()[i].getZ() << std::endl;
+      // }
 
-      std::cout << "INFORMACION CARA:" << std::endl;
+      // std::cout << "INFORMACION CARA:" << std::endl;
 
-      for (int i = 0; i < envGlobal.getCaras().size(); i++) {
-        std::cout << envGlobal.getCaras()[i].getNum_ver() << " ";
-        for (int j = 0; j < envGlobal.getCaras()[i].getNum_ver(); j++) {
-          std::cout << envGlobal.getCaras()[i].getInd_caras()[j] << " ";
-        }
-        std::cout << std::endl;
-      }
+      // for (int i = 0; i < envGlobal.getCaras().size(); i++) {
+      //   std::cout << envGlobal.getCaras()[i].getNum_ver() << " ";
+      //   for (int j = 0; j < envGlobal.getCaras()[i].getNum_ver(); j++) {
+      //     std::cout << envGlobal.getCaras()[i].getInd_caras()[j] << " ";
+      //   }
+      //   std::cout << std::endl;
+      // }
     }
   } else {
 
@@ -262,32 +262,32 @@ void envolvente(char *nombre_objeto) {
 
       Sistema3D::figs3D.push_back(envolvente);
 
-      std::cout << "comando envolvente con param" << std::endl;
-      std::cout << "Parametro:" << nombre_objeto << std::endl;
+      // std::cout << "comando envolvente con param" << std::endl;
+      // std::cout << "Parametro:" << nombre_objeto << std::endl;
       std::cout << "La caja envolvente del objeto " << nombre_objeto
                 << " se ha generado con el nombre "
                 << envolvente.getNombre_mesh()
                 << " y se ha agregado a los objetos en memoria" << std::endl;
 
       // PRUEBA
-      std::cout << envolvente.getNombre_mesh() << std::endl;
-      std::cout << envolvente.getN_vertices() << std::endl;
-      for (int i = 0; i < envolvente.getN_vertices(); i++) {
-        std::cout << envolvente.getVer()[i].getInd_ver() << " "
-                  << envolvente.getVer()[i].getX() << " "
-                  << envolvente.getVer()[i].getY() << " "
-                  << envolvente.getVer()[i].getZ() << std::endl;
-      }
+      // std::cout << envolvente.getNombre_mesh() << std::endl;
+      // std::cout << envolvente.getN_vertices() << std::endl;
+      // for (int i = 0; i < envolvente.getN_vertices(); i++) {
+      //   std::cout << envolvente.getVer()[i].getInd_ver() << " "
+      //             << envolvente.getVer()[i].getX() << " "
+      //             << envolvente.getVer()[i].getY() << " "
+      //             << envolvente.getVer()[i].getZ() << std::endl;
+      // }
 
-      std::cout << "INFORMACION CARA:" << std::endl;
+      // std::cout << "INFORMACION CARA:" << std::endl;
 
-      for (int i = 0; i < envolvente.getCaras().size(); i++) {
-        std::cout << envolvente.getCaras()[i].getNum_ver() << " ";
-        for (int j = 0; j < envolvente.getCaras()[i].getNum_ver(); j++) {
-          std::cout << envolvente.getCaras()[i].getInd_caras()[j] << " ";
-        }
-        std::cout << std::endl;
-      }
+      // for (int i = 0; i < envolvente.getCaras().size(); i++) {
+      //   std::cout << envolvente.getCaras()[i].getNum_ver() << " ";
+      //   for (int j = 0; j < envolvente.getCaras()[i].getNum_ver(); j++) {
+      //     std::cout << envolvente.getCaras()[i].getInd_caras()[j] << " ";
+      //   }
+      //   std::cout << std::endl;
+      // }
     }
   }
 }
@@ -386,12 +386,12 @@ Poly_Mesh crearEnvolventeGlobal(std::vector<Poly_Mesh> figuras) {
   }
 
   // Prueba
-  std::cout << "Pmax Global" << std::endl;
-  std::cout << xmaxGlobal << " " << ymaxGlobal << " " << zmaxGlobal
-            << std::endl;
-  std::cout << "Pmin Global" << std::endl;
-  std::cout << xminGlobal << " " << yminGlobal << " " << zminGlobal
-            << std::endl;
+  // std::cout << "Pmax Global" << std::endl;
+  // std::cout << xmaxGlobal << " " << ymaxGlobal << " " << zmaxGlobal
+  //           << std::endl;
+  // std::cout << "Pmin Global" << std::endl;
+  // std::cout << xminGlobal << " " << yminGlobal << " " << zminGlobal
+  //           << std::endl;
 
   std::string env_nombre_objeto = "global";
   unsigned int n_vertices = 8;
@@ -418,8 +418,9 @@ void descargar(char *nombre_objeto) {
 
   } else {
 
-    std::cout << "comando descargar" << std::endl;
-    std::cout << "Parametro:" << nombre_objeto << std::endl;
+    //Prueba
+    // std::cout << "comando descargar" << std::endl;
+    // std::cout << "Parametro:" << nombre_objeto << std::endl;
 
     std::vector<Poly_Mesh>::iterator itF;
     for (itF = Sistema3D::figs3D.begin(); itF != Sistema3D::figs3D.end();
@@ -494,10 +495,11 @@ void guardar(char *nombre_objeto, char *nombre_archivo) {
   }
 
   salida.close();
-
-  std::cout << "comando guardar" << std::endl;
-  std::cout << "Parametro:" << nombre_objeto << std::endl;
-  std::cout << "Parametro:" << nombre_archivo << std::endl;
+  //Prueba
+  // std::cout << "comando guardar" << std::endl;
+  // std::cout << "Parametro:" << nombre_objeto << std::endl;
+  // std::cout << "Parametro:" << nombre_archivo << std::endl;
+  
 }
 
 void ayuda(char *param) {
