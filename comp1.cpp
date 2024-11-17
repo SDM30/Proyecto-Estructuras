@@ -4,7 +4,6 @@
 #include <limits>
 
 #include "Cara.h"
-#include "Poly_Mesh.h"
 #include "Sistema3D.h"
 #include "Vertice.h"
 #include "comp1.h"

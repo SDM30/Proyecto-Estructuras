@@ -1,4 +1,6 @@
 #include "Poly_Mesh.h"
+#include "Sistema3D.h"
+#include "comp3.h"
 
 
 // Implementación del constructor
@@ -199,5 +201,11 @@ void Poly_Mesh::posicionarCentroide(Vertice centroide) {
   NodoKD* VerticeCercano = arbolVertices.vecinoCercano(centroide);
 
   Vertice vecino_centro = VerticeCercano->obtenerDato();
-  
+  centroide.setIndVer(ver.size());
+  grafo_figura.insertarVertice(centroide);
+
+  grafo_figura.insAristaNoDir(vecino_centro, centroide, vecino_centro.distanciaEuclidiana(centroide));
+
+  std::cout << "Vertice mas cercano = " << crearStrVertice(vecino_centro) << std::endl
+            << "Centroide = " << crearStrVertice(vecino_centro) << std::endl;
 }

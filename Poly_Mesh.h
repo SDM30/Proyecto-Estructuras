@@ -7,7 +7,6 @@
 #include "Cara.h"
 #include "Vertice.h"
 #include "Grafo.h"
-#include "Sistema3D.h"
 #include "ArbolKD.h"
 
 class Poly_Mesh {

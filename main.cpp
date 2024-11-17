@@ -135,7 +135,7 @@ void interfazConsola() {
 
     } else if (strcmp(comando, "ruta_corta_centro") == 0) {
 
-      if (numParametros > 2) {
+      if (numParametros != 2) {
 
         printf("Error en comando %s: numero de parametros aceptados %d\n",
                comando, 2);

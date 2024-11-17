@@ -1,5 +1,6 @@
 #ifndef __COMP2__H__
 #define __COMP2__H_
+
 #include "Poly_Mesh.h"
 
 void v_cercano(char *px, char *py, char *pz, char *nombre_objeto);

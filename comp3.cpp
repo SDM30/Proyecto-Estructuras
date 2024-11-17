@@ -1,4 +1,12 @@
+#include <cstring>
+#include <iostream>
+
 #include "comp3.h"
+#include "JSDUtils.h"
+#include "comp1.h"
+#include "comp2.h"
+#include "Sistema3D.h"
+#include "Grafo.h"
 
 
 void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
@@ -57,8 +65,14 @@ void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
 
 void ruta_corta_centro(char *i1, char *nombre_objeto) {
 
-  if ( !esNumero(i1) ) {
+  Sistema3D sistema;
 
+  if (!sistema.buscarMalla(nombre_objeto)) {
+    std::cout << "El objeto " << nombre_objeto << " no ha sido cargado en memoria." << std::endl;
+    return;
+  }
+
+  if (!esNumero(i1)) {
     std::cout << "Error: Los parametros deben ser un numero" << std::endl;
     return;
   }
@@ -82,4 +96,14 @@ void ruta_corta_centro(char *i1, char *nombre_objeto) {
   //           << centro.getX() << ", "
   //           << centro.getY() << ", "
   //           << centro.getZ() << ")" << std::endl;
+}
+
+std::string crearStrVertice(Vertice v) {
+  std::ostringstream ss;
+  ss  << v.getInd_ver()
+      << " ("
+      << v.getX() << ", "
+      << v.getY() << ", "
+      << v.getZ() << ")";
+  return ss.str();
 }
