@@ -63,6 +63,22 @@ void ruta_corta(char *i1, char *i2, char *nombre_objeto) {
     }
   }
   std::cout << "con una longitud de " << long_dist << "." << std::endl; 
+
+  std::cout<<std::endl;
+  //Prueba
+  grafo_figura.mostrarMatrizAdyacencia();
+
+  int n = grafo_figura.cantVertices();
+  for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+          if (j != n - 1) {
+            std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
+          } else {
+            std::cout << grafo_figura.obtenerAristas()[i][j]; 
+          }  
+      }
+      std::cout << std::endl;
+  }
 }
 
 void ruta_corta_centro(char *i1, char *nombre_objeto) {
@@ -113,6 +129,22 @@ void ruta_corta_centro(char *i1, char *nombre_objeto) {
     }
   }
   std::cout << "con una longitud de " << long_dist << "." << std::endl;
+
+  std::cout<<std::endl;
+  //Prueba
+  grafo_figura.mostrarMatrizAdyacencia();
+
+  int n = grafo_figura.cantVertices();
+  for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+          if (j != n - 1) {
+            std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
+          } else {
+            std::cout << grafo_figura.obtenerAristas()[i][j]; 
+          }  
+      }
+      std::cout << std::endl;
+  }
 }
 
 std::string crearStrVertice(Vertice v) {

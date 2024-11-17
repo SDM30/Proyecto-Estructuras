@@ -325,7 +325,7 @@ std::vector<T*> Grafo<T>::Dijkstra(T ver_inicial) {
     }
 
     // Inicializar los vectores `dist` y `pred` con valores iniciales
-    dist.resize(vertices.size(), std::numeric_limits<int>::max()); // Asignar distancias iniciales infinito
+    dist.resize(vertices.size(), std::numeric_limits<double>::max()); // Asignar distancias iniciales infinito
     pred.resize(vertices.size(), nullptr);                         // Asignar predecesores iniciales como nullptr
 
     int inicio = buscarVertice(ver_inicial);
@@ -337,7 +337,7 @@ std::vector<T*> Grafo<T>::Dijkstra(T ver_inicial) {
     while (!q_desconocidos.empty()) {
         // Seleccionar el vértice u en q_desconocidos con la menor distancia
         int pos_u = 0;
-        int min_dist = std::numeric_limits<int>::max();
+        double min_dist = std::numeric_limits<double>::max();
 
         for (int i = 0; i < dist.size(); i++) {
             // Solo considerar vértices que están en q_desconocidos
@@ -360,7 +360,7 @@ std::vector<T*> Grafo<T>::Dijkstra(T ver_inicial) {
         for (T vecino : vecinos_u) {
             // Verificar que el vecino esté en q_desconocidos
             if (std::find(q_desconocidos.begin(), q_desconocidos.end(), vecino) != q_desconocidos.end()) {
-                int alt = dist[pos_u] + buscarArista(ver_u, vecino);
+                double alt = dist[pos_u] + buscarArista(ver_u, vecino);
                 int pos_v = buscarVertice(vecino);
 
                 // Si encontramos una distancia menor, actualizamos dist y pred

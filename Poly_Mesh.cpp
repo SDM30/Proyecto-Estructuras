@@ -150,25 +150,6 @@ void Poly_Mesh::construirGrafo() {
 
   // std::cout << "BFS = ";
   // grafo_figura.BFS(ver[0]);
-
-  grafo_figura.mostrarMatrizAdyacencia();
-
-  int n = grafo_figura.cantVertices();
-
-  // // Imprimir encabezado de columnas
-  // std::cout << "Matriz de Adyacencia:\n";
-
-  for (int i = 0; i < n; ++i) {
-      for (int j = 0; j < n; ++j) {
-          if (j != n - 1) {
-            std::cout << grafo_figura.obtenerAristas()[i][j] << " ";
-          } else {
-            std::cout << grafo_figura.obtenerAristas()[i][j]; 
-          }  
-      }
-      std::cout << std::endl;
-  }
-
 }
 
 Vertice Poly_Mesh::calcularCentroide() {
